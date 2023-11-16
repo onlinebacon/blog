@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        background-color: #ddd;
+      }
+      #main {
+        padding: 20px 40px;
+        background-color: #eee;
+        color: #444;
+        margin: 20px auto;
+        width: 1000px;
+        box-shadow: -10px 10px 15px #ccc;
+      }
+      h1, h2 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <h1>Celestial Navigation Fix on a Stereographic Projection</h1>
+      <h2>Introduction</h2>
+      <p>When doing a celestial navigation fix we get a circle of equal altitude for each celestial body we sight. Getting our position boils down to solving for where those circles intersect. Most common methods to find that intersection requires some hard work with sight reduction tables or a calculator, plus it requires you to have an estimated position of where you are.</p>
+      <p>However all that is only needed because we're trying to work with a small section of earth's surface that contains your actual position somewhere in it. If we could draw the full circles of equal altitude on a map to find their intersection then it would dismiss pretty much all the heavy math and the need for an estimated position.</p>
+      <p>There are a couple of problems with that, the main one being that a flat map of earth gets more distorted the larger the area it represents. Circles of equal altitude are most often thousands of miles wide, so they will always get heavily distorted when fully drawn on a flat map.</p>
+    </div>
+  </body>
+</html>
