@@ -9,9 +9,24 @@
         padding: 20px 40px;
         background-color: #eee;
         color: #444;
-        margin: 20px auto;
-        width: 1000px;
-        box-shadow: -10px 10px 15px #ccc;
+      }
+      div.media-wrapper {
+        text-align: center;
+        margin: 40px 0px;
+      }
+      @media screen and (min-width: 1080px) {
+        #main {
+          margin: 20px auto;
+          width: 1000px;
+          box-shadow: -10px 10px 15px #ccc;
+        }
+      }
+      @media screen and (max-width: 1079px) {
+        #main {
+          min-width: 600px;
+          margin: 0px;
+          background-color: #ddd;
+        }
       }
       h1, h2 {
         text-align: center;
@@ -24,7 +39,15 @@
       <h2>Introduction</h2>
       <p>When doing a celestial navigation fix we get a circle of equal altitude for each celestial body we sight. Getting our position boils down to solving for where those circles intersect. Most common methods to find that intersection requires some hard work with sight reduction tables or a calculator, plus it requires you to have an estimated position of where you are.</p>
       <p>However all that is only needed because we're trying to work with a small section of earth's surface that contains your actual position somewhere in it. If we could draw the full circles of equal altitude on a map to find their intersection then it would dismiss pretty much all the heavy math and the need for an estimated position.</p>
-      <p>There are a couple of problems with that, the main one being that a flat map of earth gets more distorted the larger the area it represents. Circles of equal altitude are most often thousands of miles wide, so they will always get heavily distorted when fully drawn on a flat map.</p>
+      <p>There are a couple of problems with that, the main one being that a flat map of earth gets more distorted the larger the area it represents. Circles of equal altitude are most often thousands of miles wide, so they will always get heavily distorted when fully drawn on a flat map. An easy solution is to simply use an actual sphere.</p>
+      <div class="media-wrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Bgt8zFHTRbw?si=CkfyLX515PY4RWWx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <p>But but there's another solution for this that still just relies on paper and drawing tools.</p>
+      <p>If you take a look at how the circles of equal altitude look like on a flat map compared to on a sphere, you'll notice that they get quite distorted. The example below shows the same circles of equal altitude as on the previous video but on an equirectangular projection. The circle of Polaris looks pretty much like a straight line, while the other circles are not that circular.</p>
+      <div class="media-wrapper">
+        <img src="equirectangular.png">
+      </div>
     </div>
   </body>
 </html>
