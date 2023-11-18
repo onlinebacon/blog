@@ -47,13 +47,15 @@
       <div class="media-wrapper">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/Bgt8zFHTRbw?si=CkfyLX515PY4RWWx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
-      <p>But but there's another solution that still just relies on paper and drawing tools.</p>
+      <p>But there's another solution that still just relies on paper and drawing tools.</p>
       <p>In the image below we have the same circles of the previous video but projected on an equirectangular protection of Earth. As you can see they're not really circles in this projection. Two of them have a weird shape that is a bit circular, but the other one is pretty much a straight line.</p>
       <div class="media-wrapper">
         <img src="equirectangular.png">
       </div>
       <p>Even though flat maps of the earth will always be distorted one way or another, there is actually a workaround. One of the projections, the Stereographic projection, have the curious property that projected circles are still circles. Their diameter will be distorted and they will no longer be centered in the same spot, but they'll still be circles nonetheless.</p>
       <p>All we have to do then, is to figure out how to draw the projected circles and finally read the coordinates of their intersection.</p>
+      <h2>Plotting the longitude</h2>
+      <p>The stereographic projection is one of the azimuthal projections, which means that the azimuths of the center point are preserved. By centering the projection in one of the poles the lines of longitude become all straight, coming out of the center radially. Placing the center of a protractor in the center of the projection will give you correct angles to establish any line of longitude.</p>
     </div>
   </body>
 </html>
