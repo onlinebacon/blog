@@ -1,63 +1,85 @@
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <style>
-      body {
-        margin: 0px;
-        background-color: #ddd;
-      }
-      #main {
-        padding: 20px 40px;
-        background-color: #eee;
-        color: #444;
-      }
-      div.media-wrapper {
-        text-align: center;
-        margin: 40px 0px;
-      }
-      div.media-wrapper img {
-        max-width: 100%;
-      }
-      @media screen and (min-width: 1080px) {
-        #main {
-          margin: 20px auto;
-          width: 1000px;
-          box-shadow: -10px 10px 15px #ccc;
-        }
-      }
-      @media screen and (max-width: 1079px) {
-        #main {
-          min-width: 400px;
-          margin: 0px;
-          background-color: #ddd;
-        }
-      }
-      h1, h2 {
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="main">
-      <h1>Celestial Navigation Fix on a Stereographic Projection</h1>
-      <h2>Introduction</h2>
-      <p>When doing a celestial navigation fix we get a circle of equal altitude for each celestial body we sight. Getting our position boils down to solving for where those circles intersect. Most common methods to find that intersection requires some hard work with sight reduction tables or a calculator, plus it requires you to have an estimated position of where you are.</p>
-      <p>However all that is only needed because we're trying to work with a small section of earth's surface that contains your actual position somewhere in it. If we could draw the full circles of equal altitude on a map to find their intersection then it would dismiss pretty much all the heavy math and the need for an estimated position.</p>
-      <p>There are a couple of problems with that, the main one being that a flat map of earth gets more distorted the larger the area it represents. Circles of equal altitude are most often thousands of miles wide, so they will always get very much distorted when fully drawn on a flat map. An easy solution is to simply use an actual sphere.</p>
-      <div class="media-wrapper">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Bgt8zFHTRbw?si=CkfyLX515PY4RWWx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <p>But there's another solution that still just relies on paper and drawing tools.</p>
-      <p>In the image below we have the same circles of the previous video but projected on an equirectangular protection of Earth. As you can see they're not really circles in this projection. Two of them have a weird shape that is a bit circular, but the other one is pretty much a straight line.</p>
-      <div class="media-wrapper">
-        <img src="equirectangular.png">
-      </div>
-      <p>Even though flat maps of the earth will always be distorted one way or another, there is actually a workaround. One of the projections, the Stereographic projection, have the curious property that projected circles are still circles. Their diameter will be distorted and they will no longer be centered in the same spot, but they'll still be circles nonetheless.</p>
-      <p>All we have to do then, is to figure out how to draw the projected circles and finally read the coordinates of their intersection.</p>
-      <h2>Plotting Longitudes</h2>
-      <p>The stereographic projection is one of the azimuthal projections, which means that the azimuths from the center point are preserved. By centering the projection in one of the poles the lines of longitude become all straight, coming out of the center radially. Placing the center of a protractor in the center of the projection will give you correct angles to establish any line of longitude.</p>
-      <h2>Plotting Latitudes</h2>
-      <p>Latitudes will be a little trickyer. In this projection latitudes get more stretched away from the center the further they are from it. But a simple solution is to simply print some adjustment scales for reference.</p>
-    </div>
-  </body>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<style>
+			body {
+				font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				margin: 0px;
+				background-color: #ddd;
+			}
+			#main {
+				padding: 20px 40px;
+				background-color: #eee;
+				color: #444;
+			}
+			div.media-wrapper {
+				text-align: center;
+				margin: 40px 0px;
+			}
+			div.media-wrapper img {
+				max-width: 100%;
+			}
+			@media screen and (min-width: 1080px) {
+				#main {
+					margin: 20px auto;
+					width: 1000px;
+					box-shadow: -10px 10px 15px #ccc;
+				}
+			}
+			@media screen and (max-width: 1079px) {
+				#main {
+					min-width: 400px;
+					margin: 0px;
+					background-color: #ddd;
+				}
+			}
+			h1, h2 {
+				/* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+				text-align: center;
+				font-variant: small-caps;
+			}
+			img {
+				border: 1px solid rgba(0, 0, 0, 0.2);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<h1>Simple Method of Celestial Navigation Without Estimated Position</h1>
+			<hr>
+			<h2>Introduction</h2>
+			<p>When doing a celestial navigation fix we get a circle of equal altitude for each celestial body we sight. Getting our position boils down to solving for where those circles intersect. Most common methods to find that intersection requires some hard work with sight reduction tables or a calculator, plus it requires you to have an estimated position of where you are.</p>
+			<p>However all that is only needed because we're trying to work with a small section of Earth's surface that contains your actual position somewhere in it. If we could draw the full circles of equal altitude on a map to find their intersection then it would dismiss pretty much all the heavy math and the need for an estimated position.</p>
+			<p>There are a couple of problems with that, the main one being that a flat map of Earth gets more distorted the larger the area it represents. Circles of equal altitude are most often thousands of miles wide, so they will always get very much distorted when fully drawn on a flat map. An easy solution is to simply use an actual sphere.</p>
+			<p>But there's another solution that still only relies on paper and drawing tools.</p>
+			<p>The image below shows two circles of equal altitude projected on an equirectangular protection of Earth as black lines. As you can see they're not really circles in this projection.</p>
+			<div class="media-wrapper">
+				<img src="equirectangular.png">
+			</div>
+			<p>Even though flat maps of the Earth will always be distorted one way or another, there is actually a workaround. One of the projections, the Stereographic projection, have the curious property that projected circles are still circles. Their diameter will be distorted and they will no longer be centered in the same spot, but they'll still be circles nonetheless.</p>
+			<p>In the image below we have the same two circles but now on a stereographic projection.</p>
+			<div class="media-wrapper">
+				<img src="stereographic.png">
+			</div>
+			<p>Even though they are circular, two distortions can be noticed. Both those circles have the same radius of 45°, but when projected they end up with different sizes. Also, the black dots that mark the geographical position of the celestial bodies sighted are not where the circles are centered.</p>
+			<p>However even with these distortions these circles still pass over the correct coordinates within this projection. All we have to do then, is to figure out how to draw the projected circles and finally read the coordinates of their intersection.</p>
+			<h2>Plotting Longitudes</h2>
+			<p>The stereographic projection is one of the azimuthal projections, which means that the azimuths from the center point are preserved. By centering the projection in one of the poles the lines of longitude become all straight, coming out of the center radially. Placing the center of a protractor in the center of the projection will give you correct angles to establish any line of longitude.</p>
+			<h2>Plotting Latitudes</h2>
+			<p>Latitudes will be a little trickier. In this projection latitudes get more stretched away from the center the further they are from it. But a simple solution is to print some adjustment scales for reference.</p>
+		</div>
+	</body>
 </html>
+<!--
+	date: March 28th, 2022
+	zone: GMT-5
+	refraction: standard
+
+	star: dubhe
+	time: 14:20:51
+	alt: 45
+
+	star: arcturus
+	time: 00:22:33
+	alt: 45
+-->
