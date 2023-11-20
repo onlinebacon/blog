@@ -2,17 +2,20 @@
 	<canvas></canvas>
 </body>
 <script>
-
-const width = 600;
+const width = 1600;
 const height = Math.round(width*Math.SQRT2);
 const canvas = document.querySelector('canvas');
-canvas.width = width;
-canvas.height = height;
+canvas.width = height;
+canvas.height = width;
 const val = (px) => width/600*px;
 const ctx = canvas.getContext('2d');
 const margin = val(20.5);
+const bgColor = '#fff';
+const lineColor = '#000';
 const clear = () => {
-	ctx.fillStyle = '#222';
+	ctx.fillStyle = bgColor;
+	ctx.translate(0, width);
+	ctx.rotate(-Math.PI/2);
 	ctx.fillRect(0, 0, width, height);
 };
 const sin = deg => Math.sin(deg/180*Math.PI);
@@ -24,17 +27,14 @@ const line = (ax, ay, bx, by) => {
 	ctx.lineTo(bx, by);
 	ctx.stroke();
 };
-const nextSkip = {
-	0: 5,
-	5: 10,
-	10: 10,
-};
+const longLine = val(10);
+const shortLine = val(5);
+const textGap = val(5);
+const minDist = val(9);
+const minSmallDist = val(2.5);
+const nextSkip = { 0: 5, 5: 10, 10: 10 };
 const drawRuler = (sx, sy, minLat, size) => {
 	ctx.lineWidth = val(1);
-	const longLine = val(10);
-	const shortLine = val(5);
-	const textGap = val(5);
-	const minDist = val(10);
 	const c = size/fn(minLat);
 	const top = sy;
 	const bottom = top + size;
@@ -58,21 +58,42 @@ const drawRuler = (sx, sy, minLat, size) => {
 		if (skipping && lat % skipping !== 0) {
 			continue;
 		}
-		if (y - lastY < minDist) {
+		const pxDif = y - lastY;
+		if (pxDif < minDist) {
 			skipping = nextSkip[skipping];
 			continue;
 		}
 		addMark(lat, longLine, true);
 		skipping = 0;
+		const c = pxDif/minSmallDist;
+		const latDif = lastLat - lat;
+		if (latDif > 1 && c >= latDif) {
+			for (let i=1; i<latDif; ++i) {
+				addMark(lastLat - i, shortLine, false);
+			}
+		} else if (latDif == 1 && c >= 2) {
+			let n = 2;
+			if (c >= 5) n = 5;
+			for (let i=1; i<n; ++i) {
+				addMark(lastLat - i/n, shortLine, false);
+			}
+		}
 		lastLat = lat;
 		lastY = y;
 	}
 };
 clear();
-ctx.strokeStyle = '#ccc';
-ctx.fillStyle = '#ccc';
+ctx.strokeStyle = lineColor;
+ctx.fillStyle = lineColor;
 ctx.textBaseline = 'middle';
 ctx.textAlign = 'left';
 ctx.font = val(10) + 'px arial';
-drawRuler(margin, margin, -60, height - margin*2);
+ctx.lineJoin = 'round';
+ctx.lineCap = 'round';
+const rulerWidth = val(25);
+const minLats = [ 0, -15, -30, -40, -50, -55, -60, -65 ];
+const space = (width - margin*2 - rulerWidth)/(minLats.length - 1);
+minLats.forEach((val, i) => {
+	drawRuler(margin + i*space, margin, val, height - margin*2);
+});
 </script>
