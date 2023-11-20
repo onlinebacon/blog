@@ -5,8 +5,8 @@
 const width = 1600;
 const height = Math.round(width*Math.SQRT2);
 const canvas = document.querySelector('canvas');
-canvas.width = height;
-canvas.height = width;
+canvas.width = width;
+canvas.height = height;
 const val = (px) => width/600*px;
 const ctx = canvas.getContext('2d');
 const margin = val(20.5);
@@ -14,8 +14,6 @@ const bgColor = '#fff';
 const lineColor = '#000';
 const clear = () => {
 	ctx.fillStyle = bgColor;
-	ctx.translate(0, width);
-	ctx.rotate(-Math.PI/2);
 	ctx.fillRect(0, 0, width, height);
 };
 const sin = deg => Math.sin(deg/180*Math.PI);
