@@ -94,16 +94,22 @@
 				<li>Pollux CoP most southern point: <span>9°38.3'S</span></li>
 			</ul>
 			<p>The difference between the two GP longitudes is <span>39°35.4'</span>. Let's then draw two lines separated by around <span>39.5°</span> to represent the longitude lines of the centers of the circles.</p>
-			<p>Let's also use one of our printed latitude reference rules to mark on one of the lines the most northern and southern points of the first circle, find the center with a regular ruler and draw a circle around it that passes over the two ends of the circle. After that's done, the plotting should be looking something like this:</p>
+			<p>Let's also use one of our printed latitude reference rules to mark on one of the lines the most northern and southern points of the circle for Capella, find the center with a regular ruler and draw a circle around it that passes over the two ends of the circle. After that's done, the plotting should be looking something like this:</p>
 			<div class="media-wrapper">
 				<a href="example-01.png"><img src="example-01.png"></a>
 			</div>
+			<p>And then we run the same process using the same reference rule but for the CoP of Pollux.</p>
 			<div class="media-wrapper">
 				<a href="example-02.png"><img src="example-02.png"></a>
 			</div>
+			<p>At this point we two possible solutions, given that the circles intersect twice. If we had three circles instead, we would just have to pick the intersection where the three circles meet. To solve for this ambiguity with only two circles we can use the horizontal direction of the stars we sighted. Let's say for example, Capella was to the left and Pollux was to the right in reference to the point in between them. In this plot, that observation only matches the most southern point, so that's the one we'll go for.</p>
+			<p>We first create a line connecting the center pole to the intersection point. That line is already the longitude line of our intercept. We can measure it in reference to one of the other longitude lines. In this example, we measured that the longitude of our intercept was around 7 and a third degrees eastwards from the longitude of the GP of Capella. So we're going to write it down as <span>7°20'</span>. Because our reference longitude was West and our intercept is towards the East, we subtract the <span>7°20'</span> from our reference longitude, resulting in <span>30°9.1'W</span>. For the latitude of the intercept we just have to check the same ruler again to compare how far the intercept is from the pole, and we get that the latitude of the intercept is close to <span>7.5°</span> north, so we'll mark it as <span>7°20'N</span>.</p>
 			<div class="media-wrapper">
 				<a href="example-03.png"><img src="example-03.png"></a>
 			</div>
+			<p>And there we have our intercept coordinates: <span>7°30'N</span>, <span>30°9.1'W</span>. How good was it? Around 60 nautical miles, so not that great. But not incredibly bad either, considering we started without any estimated position and didn't have to run any complicated map or lookup tables.</p>
+			<h2>Downsides and Restrictions</h2>
+			<p>The most obvious downside is accuracy. By drawing the full circles of equal altitude, we're rendering thousands of miles in a single piece of paper, so being off by a millimeter could add many miles of error to our intercept.</p>
 		</div>
 	</body>
 </html>
